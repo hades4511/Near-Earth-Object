@@ -36,7 +36,7 @@ def write_to_csv(results: iter, filename: str):
             ])
 
 
-def write_to_json(results: iter, filename):
+def write_to_json(results: iter, filename: str):
     """Write an iterable of `CloseApproach` objects to a JSON file.
 
     The precise output specification is in `README.md`. Roughly, the output is a
@@ -48,4 +48,4 @@ def write_to_json(results: iter, filename):
     :param filename: A Path-like object pointing to where the data should be saved.
     """
     with open(filename, 'w') as json_file:
-        json.dump(list(r.serialize() for r in results), json_file, indent=2)
+        json.dump(list(result.serialize() for result in results), json_file)
