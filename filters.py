@@ -25,7 +25,6 @@ class UnsupportedCriterionError(NotImplementedError):
 
 
 class AttributeFilter:
-
     """A general superclass for filters on comparable attributes.
 
     An `AttributeFilter` represents the search criteria pattern comparing some
@@ -40,6 +39,7 @@ class AttributeFilter:
     Concrete subclasses can override the `get` classmethod to provide custom
     behavior to fetch a desired attribute from the given `CloseApproach`.
     """
+
     def __init__(self, op, value):
         """Construct a new `AttributeFilter` from an binary predicate and a reference value.
 
@@ -76,7 +76,6 @@ class AttributeFilter:
 
 
 class DateFilter(AttributeFilter):
-
     """Filter processing class for date."""
 
     @classmethod
@@ -86,7 +85,6 @@ class DateFilter(AttributeFilter):
 
 
 class DistanceFilter(AttributeFilter):
-
     """Filter processing class for distance."""
 
     @classmethod
@@ -96,7 +94,6 @@ class DistanceFilter(AttributeFilter):
 
 
 class VelocityFilter(AttributeFilter):
-
     """Filter processing class for velocity."""
 
     @classmethod
@@ -106,7 +103,6 @@ class VelocityFilter(AttributeFilter):
 
 
 class DiameterFilter(AttributeFilter):
-
     """Filter processing class for diameter."""
 
     @classmethod
@@ -116,7 +112,6 @@ class DiameterFilter(AttributeFilter):
 
 
 class HazardFilter(AttributeFilter):
-
     """Filter processing class for hazard."""
 
     @classmethod
@@ -202,7 +197,6 @@ def create_filters(
     :param hazardous: Whether the NEO of a matching `CloseApproach` is potentially hazardous.
     :return: A collection of filters for use with `query`.
     """
-
     return populates_filters(**locals())
 
 

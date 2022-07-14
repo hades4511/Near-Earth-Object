@@ -14,7 +14,6 @@ from models import NearEarthObject
 
 
 class NEODatabase:
-
     """A database of near-Earth objects and their close approaches.
 
     A `NEODatabase` contains a collection of NEOs and a collection of close
@@ -22,6 +21,7 @@ class NEODatabase:
     help fetch NEOs by primary designation or by name and to help speed up
     querying for close approaches that match criteria.
     """
+
     def __init__(self, neos: tuple, approaches: tuple):
         """Create a new `NEODatabase`.
 
