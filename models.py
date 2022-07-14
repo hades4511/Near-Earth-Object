@@ -19,6 +19,7 @@ from helpers import cd_to_datetime, datetime_to_str
 
 
 class NearEarthObject:
+
     """A near-Earth object (NEO).
 
     An NEO encapsulates semantic and physical parameters about the object, such
@@ -71,6 +72,7 @@ class NearEarthObject:
 
 
 class CloseApproach:
+
     """A close approach to Earth by an NEO.
 
     A `CloseApproach` encapsulates information about the NEO's close approach to
@@ -88,7 +90,6 @@ class CloseApproach:
 
         :param info: A dictionary of excess keyword arguments supplied to the constructor.
         """
-
         self._designation = info.get('des')
         self.time = cd_to_datetime(info.get('cd'))
         self.distance = float(info.get('dist', 0.0))
@@ -108,12 +109,11 @@ class CloseApproach:
         formatted string that can be used in human-readable representations and
         in serialization to CSV and JSON files.
         """
-
         return datetime_to_str(self.time)
 
     @property
     def designation(self):
-        """Access designation of this class"""
+        """Access designation of this class."""
         return self._designation
 
     def __str__(self):

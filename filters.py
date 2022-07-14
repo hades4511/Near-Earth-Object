@@ -25,6 +25,7 @@ class UnsupportedCriterionError(NotImplementedError):
 
 
 class AttributeFilter:
+
     """A general superclass for filters on comparable attributes.
 
     An `AttributeFilter` represents the search criteria pattern comparing some
@@ -70,57 +71,62 @@ class AttributeFilter:
         raise UnsupportedCriterionError
 
     def __repr__(self):
+        """Produce machine readable representation of class."""
         return f"{self.__class__.__name__}(op=operator.{self.op.__name__}, value={self.value})"
 
 
 class DateFilter(AttributeFilter):
-    """Filter processing class for date"""
+
+    """Filter processing class for date."""
 
     @classmethod
     def get(cls, approach: CloseApproach) -> datetime.date:
-        """Return date for filtering"""
+        """Return date for filtering."""
         return approach.time.date()
 
 
 class DistanceFilter(AttributeFilter):
-    """Filter processing class for distance"""
+
+    """Filter processing class for distance."""
 
     @classmethod
     def get(cls, approach: CloseApproach) -> float:
-        """Return distance for filtering"""
+        """Return distance for filtering."""
         return approach.distance
 
 
 class VelocityFilter(AttributeFilter):
-    """Filter processing class for velocity"""
+
+    """Filter processing class for velocity."""
 
     @classmethod
     def get(cls, approach: CloseApproach) -> float:
-        """Return velocity for filtering"""
+        """Return velocity for filtering."""
         return approach.velocity
 
 
 class DiameterFilter(AttributeFilter):
-    """Filter processing class for diameter"""
+
+    """Filter processing class for diameter."""
 
     @classmethod
     def get(cls, approach: CloseApproach) -> float:
-        """Return diameter for filtering"""
+        """Return diameter for filtering."""
         return approach.neo.diameter
 
 
 class HazardFilter(AttributeFilter):
-    """Filter processing class for hazard"""
+
+    """Filter processing class for hazard."""
 
     @classmethod
     def get(cls, approach: CloseApproach) -> bool:
-        """Return hazard for filtering"""
+        """Return hazard for filtering."""
         return approach.neo.hazardous
 
 
 def populates_filters(**kwargs) -> tuple:
     """Populate filters from arguments."""
-
     operator_options = {
         'min': ge,
         'max': le,
@@ -209,5 +215,4 @@ def limit(iterator, n=None):
     :param n: The maximum number of values to produce.
     :yield: The first (at most) `n` values from the iterator.
     """
-
     return islice(iterator, n) if n else iterator

@@ -14,6 +14,7 @@ from models import NearEarthObject
 
 
 class NEODatabase:
+
     """A database of near-Earth objects and their close approaches.
 
     A `NEODatabase` contains a collection of NEOs and a collection of close
@@ -58,7 +59,6 @@ class NEODatabase:
 
     def link_neos_and_approaches(self):
         """Link neos and approaches with each other."""
-
         for approach in self._approaches:
             neo = self._neos.get(approach.designation, None)
             if neo:
