@@ -22,7 +22,13 @@ jobs:
     - name: Set up Python 3.9
       uses: actions/setup-python@v3
       with:
-        python-version: "3.10"
+        python-version: "3.9"
+    - name: Install pydocstyle
+      run: |
+        pip install pydocstyle
+    - name: Test PydocStyle
+      run: |
+        pydocstyle database.py extract.py helpers.py filters.py models.py write.py
     - name: Test using unittest
       run: |
         python3 -m unittest
