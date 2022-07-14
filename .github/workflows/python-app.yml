@@ -26,9 +26,13 @@ jobs:
     - name: Install pydocstyle
       run: |
         pip install pydocstyle
-    - name: Test PydocStyle
+        pip install isort
+    - name: Test Docstring
       run: |
         pydocstyle database.py extract.py helpers.py filters.py models.py write.py
+    - name: Test Sorting
+      run: |
+        isort database.py extract.py helpers.py filters.py models.py write.py
     - name: Test using unittest
       run: |
         python3 -m unittest
